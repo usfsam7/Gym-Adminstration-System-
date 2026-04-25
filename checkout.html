@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - GAS (Gym Administration System)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+            <h1>💪 GAS - Gym Administration System</h1>
+            <button id="themeToggle" onclick="toggleTheme();" style="background: white; color: #1a1a2e; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 1em;">🌙 Dark</button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="checkout.html">Memberships</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="signin.html">Sign In</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- CHECKOUT HEADER -->
+        <div class="section">
+            <h2>Membership Checkout</h2>
+            <p>
+                Select your desired memberships below and complete your purchase. 
+                You can select multiple packages or purchase in bulk.
+            </p>
+        </div>
+
+        <!-- CHECKOUT FORM -->
+        <div class="section">
+            <h2>Select Your Memberships</h2>
+            
+            <form name="checkoutForm" onsubmit="return validateCheckout();">
+                <!-- PACKAGE 1: BASIC -->
+                <div style="padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 20px; border: 2px solid #ddd;">
+                    <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0 0 10px 0; color: #1a1a2e;">Basic Membership</h3>
+                            <p style="margin: 0 0 10px 0; color: #666; font-size: 0.95em;">
+                                Access to basic gym facilities during business hours
+                            </p>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;">
+                                <li>Gym access during business hours</li>
+                                <li>Basic equipment access</li>
+                                <li>Locker facilities</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5em; font-weight: 700; color: #e94560; margin-bottom: 10px;">$29.99</div>
+                            <div style="color: #999; font-size: 0.9em; margin-bottom: 15px;">Per Month</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <label for="basic_qty" style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
+                            <input 
+                                type="text" 
+                                id="basic_qty" 
+                                name="basic_qty" 
+                                value="0" 
+                                style="width: 60px; text-align: center;"
+                                onchange="calculateTotal();"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PACKAGE 2: STANDARD -->
+                <div style="padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 20px; border: 2px solid #e94560;">
+                    <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0 0 10px 0; color: #1a1a2e;">⭐ Standard Membership</h3>
+                            <p style="margin: 0 0 10px 0; color: #666; font-size: 0.95em; font-weight: 600;">
+                                Most Popular Choice
+                            </p>
+                            <p style="margin: 0 0 10px 0; color: #666; font-size: 0.95em;">
+                                24/7 access to all gym facilities and group classes
+                            </p>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;">
+                                <li>24/7 gym access</li>
+                                <li>All equipment access</li>
+                                <li>Unlimited group fitness classes</li>
+                                <li>Guest privileges</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5em; font-weight: 700; color: #e94560; margin-bottom: 10px;">$49.99</div>
+                            <div style="color: #999; font-size: 0.9em; margin-bottom: 15px;">Per Month</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <label for="standard_qty" style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
+                            <input 
+                                type="text" 
+                                id="standard_qty" 
+                                name="standard_qty" 
+                                value="0" 
+                                style="width: 60px; text-align: center;"
+                                onchange="calculateTotal();"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PACKAGE 3: PREMIUM -->
+                <div style="padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 20px; border: 2px solid #ddd;">
+                    <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0 0 10px 0; color: #1a1a2e;">Premium Membership</h3>
+                            <p style="margin: 0 0 10px 0; color: #666; font-size: 0.95em;">
+                                Full access with personal training sessions included
+                            </p>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;">
+                                <li>Everything in Standard</li>
+                                <li>2 Personal Training Sessions/Month</li>
+                                <li>Nutrition Consultation</li>
+                                <li>Priority class booking</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5em; font-weight: 700; color: #e94560; margin-bottom: 10px;">$79.99</div>
+                            <div style="color: #999; font-size: 0.9em; margin-bottom: 15px;">Per Month</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <label for="premium_qty" style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
+                            <input 
+                                type="text" 
+                                id="premium_qty" 
+                                name="premium_qty" 
+                                value="0" 
+                                style="width: 60px; text-align: center;"
+                                onchange="calculateTotal();"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PACKAGE 4: ELITE -->
+                <div style="padding: 20px; background: #f9f9f9; border-radius: 10px; margin-bottom: 20px; border: 2px solid #ddd;">
+                    <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 20px; align-items: center;">
+                        <div>
+                            <h3 style="margin: 0 0 10px 0; color: #1a1a2e;">🏆 Elite Membership</h3>
+                            <p style="margin: 0 0 10px 0; color: #666; font-size: 0.95em;">
+                                Premium experience with unlimited personal training
+                            </p>
+                            <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; color: #555;">
+                                <li>Everything in Premium</li>
+                                <li>8 Personal Training Sessions/Month</li>
+                                <li>Monthly wellness assessment</li>
+                                <li>VIP lounge access</li>
+                                <li>Priority support</li>
+                            </ul>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5em; font-weight: 700; color: #e94560; margin-bottom: 10px;">$129.99</div>
+                            <div style="color: #999; font-size: 0.9em; margin-bottom: 15px;">Per Month</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <label for="elite_qty" style="display: block; margin-bottom: 8px; font-weight: 600;">Quantity</label>
+                            <input 
+                                type="text" 
+                                id="elite_qty" 
+                                name="elite_qty" 
+                                value="0" 
+                                style="width: 60px; text-align: center;"
+                                onchange="calculateTotal();"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER SUMMARY -->
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Basic Membership (0 × $29.99)</span>
+                        <span id="basicTotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Standard Membership (0 × $49.99)</span>
+                        <span id="standardTotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Premium Membership (0 × $79.99)</span>
+                        <span id="premiumTotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Elite Membership (0 × $129.99)</span>
+                        <span id="eliteTotal">$0.00</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- CUSTOMER INFORMATION -->
+                <div class="checkout-form">
+                    <h3>Billing Information</h3>
+
+                    <div style="margin-top: 20px;">
+                        <label for="fullname">Full Name *</label>
+                        <input 
+                            type="text" 
+                            id="fullname" 
+                            name="fullname" 
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Enter your email address"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone Number *</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="Enter your phone number"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="address">Address *</label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            name="address" 
+                            placeholder="Enter your street address"
+                            required
+                        >
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label for="city">City *</label>
+                            <input 
+                                type="text" 
+                                id="city" 
+                                name="city" 
+                                placeholder="Enter your city"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <label for="zip">ZIP Code *</label>
+                            <input 
+                                type="text" 
+                                id="zip" 
+                                name="zip" 
+                                placeholder="Enter your ZIP code"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 30px;">Payment Method</h3>
+
+                    <div style="margin-top: 20px;">
+                        <label for="cardname">Cardholder Name *</label>
+                        <input 
+                            type="text" 
+                            id="cardname" 
+                            name="cardname" 
+                            placeholder="Name on card"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="cardnumber">Card Number *</label>
+                        <input 
+                            type="text" 
+                            id="cardnumber" 
+                            name="cardnumber" 
+                            placeholder="1234 5678 9012 3456"
+                            required
+                        >
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div>
+                            <label for="expiry">Expiry Date (MM/YY) *</label>
+                            <input 
+                                type="text" 
+                                id="expiry" 
+                                name="expiry" 
+                                placeholder="MM/YY"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <label for="cvv">CVV *</label>
+                            <input 
+                                type="text" 
+                                id="cvv" 
+                                name="cvv" 
+                                placeholder="123"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div style="background: #f0f8ff; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms" style="display: inline; margin-left: 8px;">
+                            I agree to the <strong>Terms & Conditions</strong> and 
+                            <strong>Auto-Renewal Policy</strong> *
+                        </label>
+                    </div>
+
+                    <input type="submit" value="Complete Purchase" style="margin-top: 20px; width: 100%; font-size: 1.1em; padding: 15px;">
+                </div>
+            </form>
+        </div>
+
+        <!-- INFO SECTION -->
+        <div class="section" style="background: #f0f8ff;">
+            <h2>Purchase Information</h2>
+            
+            <h3>What's Included</h3>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li>Immediate activation of your membership</li>
+                <li>Access to all benefits included in your selected plan</li>
+                <li>Confirmation email with membership details</li>
+                <li>Welcome package with gym information</li>
+                <li>30-day money-back guarantee (applies to new members)</li>
+            </ul>
+
+            <h3>Billing & Renewal</h3>
+            <p>
+                Your membership will automatically renew each month on the same date you purchased it. 
+                You can manage your subscription or cancel anytime through your account settings. 
+                No hidden fees or long-term contracts required.
+            </p>
+
+            <h3>Questions?</h3>
+            <p>
+                If you have any questions about your purchase, contact our support team at 
+                <strong>support@gymadmin.com</strong> or call <strong>+1 (555) 987-6543</strong>.
+            </p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 GAS - Gym Administration System. All rights reserved.</p>
+        <p>
+            <a href="about.html">About</a> | 
+            <a href="contact.html">Contact</a> | 
+            <a href="signin.html">Sign In</a>
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

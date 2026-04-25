@@ -1,0 +1,587 @@
+/* ============================================
+   GYM ADMINISTRATION SYSTEM - SHARED CSS
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background-color: #e94560;
+}
+
+/* ============================================
+   CONTAINER & LAYOUT
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #1a1a2e;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #e94560;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #16213e;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+label {
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #e94560;
+    background-color: #fafafa;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button,
+input[type="submit"] {
+    padding: 12px 30px;
+    background-color: #e94560;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #d63a4f;
+    transform: translateY(-2px);
+}
+
+button:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   CARDS & PRODUCTS
+   ============================================ */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.product-card {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-name {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.product-price {
+    font-size: 2em;
+    color: #e94560;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.product-duration {
+    color: #999;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.product-features {
+    text-align: left;
+    margin: 20px 0;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.product-features li {
+    list-style-position: inside;
+    margin: 8px 0;
+    color: #555;
+}
+
+/* ============================================
+   TEAM MEMBER CARDS
+   ============================================ */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.team-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.team-image {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, #e94560, #ff6b8a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5em;
+    color: white;
+    font-weight: bold;
+}
+
+.team-image-photo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.team-info {
+    padding: 20px;
+}
+
+.team-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+}
+
+.team-role {
+    font-size: 0.95em;
+    color: #e94560;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.team-description {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+/* ============================================
+   CHECKOUT SUMMARY
+   ============================================ */
+
+.checkout-summary {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border-left: 4px solid #e94560;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: #1a1a2e;
+    border-top: 2px solid #ddd;
+}
+
+.checkout-form {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    background: #1a1a2e;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+footer p {
+    color: white;
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: #e94560;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.text-success {
+    color: #27ae60;
+}
+
+.text-error {
+    color: #e74c3c;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    .container {
+        margin: 20px auto;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    form {
+        gap: 12px;
+    }
+}
+
+/* ============================================
+   DARK MODE THEME
+   ============================================ */
+
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode nav a:hover {
+    background-color: #ff6b8a;
+}
+
+body.dark-mode .section {
+    background: #2a2a3e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-color: #3a3a4e;
+}
+
+body.dark-mode h2 {
+    color: #e0e0e0;
+    border-bottom-color: #e94560;
+}
+
+body.dark-mode h3 {
+    color: #f0f0f0;
+}
+
+body.dark-mode p {
+    color: #b0b0b0;
+}
+
+body.dark-mode label {
+    color: #e0e0e0;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="tel"],
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="email"]:focus,
+body.dark-mode input[type="password"]:focus,
+body.dark-mode input[type="tel"]:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: #e94560;
+    background-color: #252535;
+}
+
+body.dark-mode .product-card {
+    background: #2a2a3e;
+    border-color: #444;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .product-card:hover {
+    box-shadow: 0 6px 15px rgba(233, 69, 96, 0.3);
+}
+
+body.dark-mode .product-name {
+    color: #e0e0e0;
+}
+
+body.dark-mode .product-description {
+    color: #a0a0a0;
+}
+
+body.dark-mode .product-duration {
+    color: #707070;
+}
+
+body.dark-mode .product-features {
+    background: #1a1a2e;
+}
+
+body.dark-mode .product-features li {
+    color: #a0a0a0;
+}
+
+body.dark-mode .team-card {
+    background: #2a2a3e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .team-card:hover {
+    box-shadow: 0 8px 16px rgba(233, 69, 96, 0.3);
+}
+
+body.dark-mode .team-name {
+    color: #e0e0e0;
+}
+
+body.dark-mode .team-description {
+    color: #a0a0a0;
+}
+
+body.dark-mode .checkout-summary {
+    background: #1a1a2e;
+    border-left-color: #e94560;
+}
+
+body.dark-mode .summary-row {
+    border-bottom-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode .summary-total {
+    color: #e0e0e0;
+    border-top-color: #444;
+}
+
+body.dark-mode .checkout-form {
+    background: #1a1a2e;
+}
+
+body.dark-mode footer {
+    background: #0f0f1e;
+}
+
+body.dark-mode footer p {
+    color: #e0e0e0;
+}
+
+body.dark-mode footer a {
+    color: #ff6b8a;
+}
+
+body.dark-mode .text-center {
+    color: #e0e0e0;
+}
+
+body.dark-mode #themeToggle {
+    background: #2a2a3e;
+    color: #e0e0e0;
+    border-color: #444;
+}
