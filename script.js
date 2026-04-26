@@ -10,14 +10,14 @@ function toggleTheme() {
     var body = document.body;
     var themeButton = document.getElementById("themeToggle");
 
-    if (body.classList.contains("dark-mode")) {
-        body.classList.remove("dark-mode");
-        themeButton.innerHTML = "🌙";
-        localStorage.setItem("theme", "light");
-    } else {
-        body.classList.add("dark-mode");
-        themeButton.innerHTML = "☀️";
+    if (body.classList.contains("light-mode")) {
+        body.classList.remove("light-mode");
+        themeButton.innerHTML = "🌙 Dark";
         localStorage.setItem("theme", "dark");
+    } else {
+        body.classList.add("light-mode");
+        themeButton.innerHTML = "☀️ Light";
+        localStorage.setItem("theme", "light");
     }
 }
 
@@ -30,12 +30,12 @@ function loadTheme() {
         return;
     }
 
-    if (savedTheme == "dark") {
-        body.classList.add("dark-mode");
-        themeButton.innerHTML = "☀️";
+    if (savedTheme == "light") {
+        body.classList.add("light-mode");
+        themeButton.innerHTML = "☀️ Light";
     } else {
-        body.classList.remove("dark-mode");
-        themeButton.innerHTML = "🌙";
+        body.classList.remove("light-mode");
+        themeButton.innerHTML = "🌙 Dark";
     }
 }
 

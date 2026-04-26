@@ -3,197 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - GAS (Gym Administration System)</title>
+    <title>Sign In — GAS Gym Administration System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- HEADER & NAVIGATION -->
-    <header>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
-            <h1>💪 GAS - Gym Administration System</h1>
-            <button id="themeToggle" onclick="toggleTheme();" style="background: white; color: #1a1a2e; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 1em;">🌙 Dark</button>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="checkout.html">Memberships</a>
-            <a href="signup.html">Sign Up</a>
-            <a href="signin.html">Sign In</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
-        <!-- SIGN IN SECTION -->
-        <div class="section" style="max-width: 500px; margin: 40px auto;">
-            <h2>Welcome Back!</h2>
-            <p style="text-align: center; color: #666;">
-                Sign in to your account to access exclusive benefits and manage your membership.
+<header>
+    <div class="header-top">
+        <div class="logo"><span class="logo-icon">💪</span> G<span>A</span>S</div>
+        <button id="themeToggle" onclick="toggleTheme();">🌙 Dark</button>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="checkout.html">Memberships</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="section sign-wrap">
+        <h2>Welcome Back</h2>
+        <p>Sign in to your GAS account to manage your membership and access your benefits.</p>
+
+        <form name="signinForm" onsubmit="return validateSignin();">
+            <div>
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div>
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 4px;">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="remember" name="remember"> Remember me
+                </label>
+                <a href="#" style="color:var(--red); text-decoration:none; font-size:0.85rem; font-weight:500;">Forgot password?</a>
+            </div>
+            <input type="submit" value="Sign In →" style="margin-top: 8px;">
+        </form>
+
+        <p style="text-align:center; margin-top: 24px; font-size: 0.9rem;">
+            No account yet? <a href="signup.html" style="color:var(--red); text-decoration:none; font-weight:600;">Create one free</a>
+        </p>
+    </div>
+
+    <!-- TEST CREDENTIALS -->
+    <div class="section">
+        <h2>Test Accounts</h2>
+        <p>Use these credentials to explore the system:</p>
+        <div class="grid-2">
+            <div class="demo-account">
+                <strong>Admin Account</strong>
+                <div class="cred"><span>Username:</span><em>admin</em></div>
+                <div class="cred"><span>Password:</span><em>password123</em></div>
+            </div>
+            <div class="demo-account">
+                <strong>User — John Doe</strong>
+                <div class="cred"><span>Username:</span><em>john_doe</em></div>
+                <div class="cred"><span>Password:</span><em>john1234</em></div>
+            </div>
+            <div class="demo-account">
+                <strong>User — Jane Smith</strong>
+                <div class="cred"><span>Username:</span><em>jane_smith</em></div>
+                <div class="cred"><span>Password:</span><em>jane5678</em></div>
+            </div>
+            <div class="demo-account">
+                <strong>User — user123</strong>
+                <div class="cred"><span>Username:</span><em>user123</em></div>
+                <div class="cred"><span>Password:</span><em>user9999</em></div>
+            </div>
+        </div>
+        <p style="margin-top:20px; font-size:0.8rem;">
+            💡 These are demo credentials only. In production, authentication runs on a secure backend server.
+        </p>
+    </div>
+
+    <!-- SECURITY TIPS -->
+    <div class="section">
+        <h2>Account Security</h2>
+        <ul class="styled">
+            <li><strong style="color:var(--text);">Use a strong password</strong> — 8+ characters with letters, numbers, and symbols.</li>
+            <li><strong style="color:var(--text);">Keep it private</strong> — Never share your credentials, even with staff.</li>
+            <li><strong style="color:var(--text);">Update regularly</strong> — Change your password every few months.</li>
+            <li><strong style="color:var(--text);">Sign out on shared devices</strong> — Always logout when done on public machines.</li>
+            <li><strong style="color:var(--text);">Report issues</strong> — Contact us if you notice any suspicious account activity.</li>
+        </ul>
+
+        <div style="margin-top:32px; padding:20px; background:var(--dark-3); border:1px solid var(--border); border-radius:var(--radius); text-align:center;">
+            <p style="margin:0; font-size:0.9rem;">
+                Need help? Visit <a href="contact.html" style="color:var(--red); text-decoration:none; font-weight:600;">Contact Us</a> or browse the <a href="about.html" style="color:var(--red); text-decoration:none; font-weight:600;">About page</a>.
             </p>
-
-            <form name="signinForm" onsubmit="return validateSignin();">
-                <div>
-                    <label for="username">Username or Email *</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        placeholder="Enter your username or email"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <label for="password">Password *</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        placeholder="Enter your password"
-                        required
-                    >
-                </div>
-
-                <div style="display: flex; align-items: center; gap: 10px; margin: 15px 0;">
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember" style="margin: 0;">Remember me</label>
-                </div>
-
-                <input type="submit" value="Sign In">
-            </form>
-
-            <div style="margin-top: 20px; text-align: center;">
-                <p style="color: #666;">
-                    Don't have an account? 
-                    <a href="signup.html" style="color: #e94560; font-weight: 600; text-decoration: none;">Create One Now</a>
-                </p>
-            </div>
-
-            <div style="margin-top: 20px; text-align: center; padding-top: 20px; border-top: 1px solid #ddd;">
-                <a href="#" style="color: #e94560; text-decoration: none; font-weight: 500;">Forgot your password?</a>
-            </div>
-        </div>
-
-        <!-- SECURITY INFO SECTION -->
-        <div class="section" style="background: #f0f8ff;">
-            <h2>Account Security</h2>
-            <p>We take your security seriously. Here are some tips to keep your account safe:</p>
-            
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li><strong>Use a Strong Password:</strong> Choose a password with at least 8 characters, including letters, numbers, and symbols.</li>
-                <li><strong>Keep it Private:</strong> Never share your password with anyone, even gym staff.</li>
-                <li><strong>Update Regularly:</strong> Change your password every 3 months for added security.</li>
-                <li><strong>Sign Out Properly:</strong> Always sign out when using public computers.</li>
-                <li><strong>Report Suspicious Activity:</strong> Contact support immediately if you notice unusual account activity.</li>
-            </ul>
-        </div>
-
-        <!-- TEST CREDENTIALS -->
-        <div class="section" style="background: #fffbea;">
-            <h2>Test Credentials</h2>
-            <p style="color: #666;">
-                Try signing in with one of these test accounts to explore the system:
-            </p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
-                <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #e94560;">
-                    <strong style="display: block; margin-bottom: 10px;">Account 1 (Admin)</strong>
-                    <div style="font-family: monospace; background: #f9f9f9; padding: 10px; border-radius: 3px;">
-                        <p style="margin: 5px 0;"><strong>Username:</strong> admin</p>
-                        <p style="margin: 5px 0;"><strong>Password:</strong> password123</p>
-                    </div>
-                </div>
-
-                <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #e94560;">
-                    <strong style="display: block; margin-bottom: 10px;">Account 2 (User)</strong>
-                    <div style="font-family: monospace; background: #f9f9f9; padding: 10px; border-radius: 3px;">
-                        <p style="margin: 5px 0;"><strong>Username:</strong> john_doe</p>
-                        <p style="margin: 5px 0;"><strong>Password:</strong> john1234</p>
-                    </div>
-                </div>
-
-                <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #e94560;">
-                    <strong style="display: block; margin-bottom: 10px;">Account 3 (User)</strong>
-                    <div style="font-family: monospace; background: #f9f9f9; padding: 10px; border-radius: 3px;">
-                        <p style="margin: 5px 0;"><strong>Username:</strong> jane_smith</p>
-                        <p style="margin: 5px 0;"><strong>Password:</strong> jane5678</p>
-                    </div>
-                </div>
-
-                <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #e94560;">
-                    <strong style="display: block; margin-bottom: 10px;">Account 4 (User)</strong>
-                    <div style="font-family: monospace; background: #f9f9f9; padding: 10px; border-radius: 3px;">
-                        <p style="margin: 5px 0;"><strong>Username:</strong> user123</p>
-                        <p style="margin: 5px 0;"><strong>Password:</strong> user9999</p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="color: #666; margin-top: 20px; font-size: 0.95em;">
-                💡 <strong>Tip:</strong> These credentials are only for testing purposes. 
-                In a real application, authentication would be handled securely by a backend server.
-            </p>
-        </div>
-
-        <!-- HELP SECTION -->
-        <div class="section">
-            <h2>Need Help?</h2>
-            
-            <h3>Common Issues</h3>
-            <div style="margin-top: 20px;">
-                <div style="padding: 15px; background: #f9f9f9; margin-bottom: 15px; border-radius: 5px;">
-                    <strong>I forgot my username</strong>
-                    <p style="margin-top: 10px; color: #666;">
-                        Check the confirmation email we sent when you created your account. 
-                        If you can't find it, contact our support team.
-                    </p>
-                </div>
-
-                <div style="padding: 15px; background: #f9f9f9; margin-bottom: 15px; border-radius: 5px;">
-                    <strong>I forgot my password</strong>
-                    <p style="margin-top: 10px; color: #666;">
-                        Click the "Forgot your password?" link below the login form to reset it. 
-                        We'll send you a reset link to your email address.
-                    </p>
-                </div>
-
-                <div style="padding: 15px; background: #f9f9f9; margin-bottom: 15px; border-radius: 5px;">
-                    <strong>I'm getting an "Invalid credentials" error</strong>
-                    <p style="margin-top: 10px; color: #666;">
-                        Make sure you're entering the correct username and password. 
-                        Passwords are case-sensitive. Try using Caps Lock to verify.
-                    </p>
-                </div>
-
-                <div style="padding: 15px; background: #f9f9f9; margin-bottom: 15px; border-radius: 5px;">
-                    <strong>I still can't sign in</strong>
-                    <p style="margin-top: 10px; color: #666;">
-                        Contact our support team at support@gymadmin.com or call +1 (555) 987-6543. 
-                        We're available during business hours to assist you.
-                    </p>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; text-align: center; padding: 20px; background: #f0f8ff; border-radius: 5px;">
-                <p style="margin: 0;">
-                    Questions? Visit our <a href="contact.html" style="color: #e94560; font-weight: 600; text-decoration: none;">Contact Page</a> 
-                    or browse the <a href="about.html" style="color: #e94560; font-weight: 600; text-decoration: none;">About Us</a> section.
-                </p>
-            </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 GAS - Gym Administration System. All rights reserved.</p>
-        <p>
-            <a href="about.html">About</a> | 
-            <a href="contact.html">Contact</a> | 
-            <a href="signin.html">Sign In</a>
-        </p>
-    </footer>
+</div>
 
-    <script src="script.js"></script>
+<footer>
+    <div class="footer-logo">G<span>A</span>S</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="checkout.html">Memberships</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 GAS — Gym Administration System. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
