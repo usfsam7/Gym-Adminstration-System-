@@ -12,11 +12,11 @@ function toggleTheme() {
 
     if (body.classList.contains("dark-mode")) {
         body.classList.remove("dark-mode");
-        themeButton.innerHTML = "🌙 Dark";
+        themeButton.innerHTML = "🌙";
         localStorage.setItem("theme", "light");
     } else {
         body.classList.add("dark-mode");
-        themeButton.innerHTML = "☀️ Light";
+        themeButton.innerHTML = "☀️";
         localStorage.setItem("theme", "dark");
     }
 }
@@ -32,10 +32,10 @@ function loadTheme() {
 
     if (savedTheme == "dark") {
         body.classList.add("dark-mode");
-        themeButton.innerHTML = "☀️ Light";
+        themeButton.innerHTML = "☀️";
     } else {
         body.classList.remove("dark-mode");
-        themeButton.innerHTML = "🌙 Dark";
+        themeButton.innerHTML = "🌙";
     }
 }
 
